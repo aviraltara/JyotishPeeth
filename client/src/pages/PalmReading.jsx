@@ -14,7 +14,8 @@ const PalmReading = () => {
     const formData = new FormData();
     for (let file of files) formData.append('hands', file);
     try {
-      const res = await fetch('http://localhost:5000/api/palm-reading', {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${API_URL}/api/palm-reading`, {
         method: 'POST',
         body: formData
       });
